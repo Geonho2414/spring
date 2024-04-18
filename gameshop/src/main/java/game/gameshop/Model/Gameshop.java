@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "gameshopdb")
-public class gameshop {
+public class Gameshop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,10 +19,10 @@ public class gameshop {
     @Column(name = "text", length = 65535)
     private String text;
 
-    public gameshop() {
+    public Gameshop() {
     }
 
-    public gameshop(long id, String title, String genre, int price, String image, String text) {
+    public Gameshop(long id, String title, String genre, int price, String image, String text) {
         this.id = id;
         this.title = title;
         this.genre = genre;
