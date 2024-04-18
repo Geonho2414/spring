@@ -1,4 +1,4 @@
-package game.gameshop.Model;
+package gameshop.gameshop.Model;
 
 import jakarta.persistence.*;
 
@@ -7,17 +7,17 @@ import jakarta.persistence.*;
 public class Gameshop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    public long id;
     @Column(name = "title", nullable = false, length = 100)
-    private String title;
+    public String title;
     @Column(name = "genre", nullable = false, length = 100)
-    private String genre;
-    @Column(name = "price", nullable = false)
-    private int price;
+    public String genre;
+    @Column(name = "price")
+    public int price;
     @Column(name = "image", length = 65535)
-    private String image;
+    public String image;
     @Column(name = "text", length = 65535)
-    private String text;
+    public String text;
 
     public Gameshop() {
     }
