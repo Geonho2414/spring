@@ -1,5 +1,6 @@
 package gameshop.gameshop.Service;
 
+import gameshop.gameshop.Exception.ResourceNotFoundExceotion;
 import gameshop.gameshop.Model.Gameshop;
 import gameshop.gameshop.Repository.GameshopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class GameshopService {
         if(gameshop.isPresent()){
             return gameshop.get();
         }else {
-            return null;
+            throw new ResourceNotFoundExceotion("Gamshop", "ID", id);
         }
     }
 
@@ -42,7 +43,7 @@ public class GameshopService {
             gameshopRepository.save(gameshop1.get());
             return gameshop1.get();
         }else {
-            return null;
+            throw new ResourceNotFoundExceotion("Gamshop", "ID", id);
         }
     }
 }

@@ -3,7 +3,7 @@ package dw.firstapp.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND) // http 의 상태 - 예외에도 응답해주는 기능
+@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE) // http 의 상태 - 예외에도 응답해주는 기능
 public class ResourceNotFoundException extends RuntimeException {
     // serialVersionUID = 선택사항. 에러가 가지고 있는 고유 아이디.
     private static final long serialVersionUID = 1L;
@@ -19,5 +19,18 @@ public class ResourceNotFoundException extends RuntimeException {
         this.resourceName = resourceName;
         this.fieldName = fieldName;
         this.fieldValue = fieldValue;
+    }
+
+    // exception 은 setter 를 만들지 않음
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public Object getFieldValue() {
+        return fieldValue;
     }
 }

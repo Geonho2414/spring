@@ -1,5 +1,6 @@
 package dw.firstapp.service;
 
+import dw.firstapp.exception.ResourceNotFoundException;
 import dw.firstapp.model.Employee;
 import dw.firstapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isEmpty()) {
             //예외처리
-            return null; // 임시로 null을 해놓았지만 원래 이자리엔 exception으로 던져주어야 한다.
+            throw new ResourceNotFoundException("Employee", "ID", id);
         } else {
             return employee.get();
             // Optional로 포장을 하였기 때문에 바로 return employee 를 하면 안되고
@@ -55,7 +56,7 @@ public class EmployeeService {
             employeeRepository.save(employee1.get());
             return employee1.get();
         }else {
-            return null;
+            throw new ResourceNotFoundException("Employee", "ID", id);
         }
     }
 
@@ -63,7 +64,7 @@ public class EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isEmpty()) {
             //예외처리
-            return null; // 임시로 null을 해놓았지만 원래 이자리엔 exception으로 던져주어야 한다.
+            throw new ResourceNotFoundException("Employee", "ID", id);
         } else {
             employeeRepository.deleteById(id);
             return employee.get();

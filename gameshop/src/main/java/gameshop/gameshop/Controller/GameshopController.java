@@ -1,9 +1,10 @@
 package gameshop.gameshop.Controller;
 
 import gameshop.gameshop.Model.Gameshop;
-import gameshop.gameshop.Repository.GameshopRepository;
 import gameshop.gameshop.Service.GameshopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,23 +18,23 @@ public class GameshopController {
     }
 
     @PostMapping("/api/gameshop")
-    public Gameshop saveGameshop(@RequestBody Gameshop gameshop){
-        return gameshopService.saveGameshop(gameshop);
+    public ResponseEntity<Gameshop> saveGameshop(@RequestBody Gameshop gameshop){
+        return new ResponseEntity<>(gameshopService.saveGameshop(gameshop), HttpStatus.OK);
     }
 
     @GetMapping("/api/gameshop")
-    public List<Gameshop> getAllGames(){
-        return gameshopService.getAllGames();
+    public ResponseEntity<List<Gameshop>> getAllGames(){
+        return new ResponseEntity<>(gameshopService.getAllGames(), HttpStatus.OK);
     }
 
     @GetMapping("/api/gameshop/{id}")
-    public Gameshop getGameshopById(@PathVariable long id){
-        return gameshopService.getGameshopById(id);
+    public ResponseEntity<Gameshop> getGameshopById(@PathVariable long id){
+        return new ResponseEntity<>(gameshopService.getGameshopById(id), HttpStatus.OK);
     }
 
     @PutMapping("/api/gameshop/{id}")
-    public Gameshop updateGameshopById(@PathVariable long id,
+    public ResponseEntity<Gameshop> updateGameshopById(@PathVariable long id,
                                        @RequestBody Gameshop gameshop){
-        return gameshopService.updateGameshopById(id, gameshop);
+        return new ResponseEntity<>(gameshopService.updateGameshopById(id, gameshop), HttpStatus.OK);
     }
 }
