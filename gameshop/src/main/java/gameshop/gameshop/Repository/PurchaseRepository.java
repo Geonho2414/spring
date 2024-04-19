@@ -1,4 +1,7 @@
 package gameshop.gameshop.Repository;
 
-public interface PurchaseRepository {
+import gameshop.gameshop.Model.Purchase;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 }
