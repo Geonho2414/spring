@@ -19,7 +19,7 @@ public class Purchase {
     private long id;
     @ManyToOne
     @JoinColumn(name = "game_id")
-    private Gameshop game;
+    private Gameshop gameshop;
     @ManyToOne
     private User user;
     @Column(name = "purchase_time")
