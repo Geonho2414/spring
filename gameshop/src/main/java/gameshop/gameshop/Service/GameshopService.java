@@ -2,7 +2,9 @@ package gameshop.gameshop.Service;
 
 import gameshop.gameshop.Exception.ResourceNotFoundExceotion;
 import gameshop.gameshop.Model.Gameshop;
+import gameshop.gameshop.Model.User;
 import gameshop.gameshop.Repository.GameshopRepository;
+import gameshop.gameshop.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,12 @@ import java.util.Optional;
 public class GameshopService {
     @Autowired
     GameshopRepository gameshopRepository;
+    UserRepository userRepository;
+
+    public GameshopService(GameshopRepository gameshopRepository, UserRepository userRepository) {
+        this.gameshopRepository = gameshopRepository;
+        this.userRepository = userRepository;
+    }
 
     public Gameshop saveGameshop(Gameshop gameshop){
         gameshopRepository.save(gameshop);
@@ -45,5 +53,12 @@ public class GameshopService {
         }else {
             throw new ResourceNotFoundExceotion("Gamshop", "ID", id);
         }
+    }
+
+
+    //User
+    //Save
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 }
