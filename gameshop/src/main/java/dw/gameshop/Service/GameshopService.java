@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GameshopService {
@@ -70,19 +71,27 @@ public class GameshopService {
 //        }
 //        return Max;
         //람다식 사용 예
-        return games.stream().sorted(Comparator.comparingInt((Gameshop g)-> g.getPrice()).reversed()).findFirst().orElseThrow(
-                () -> new ResourceNotFoundException("Max Price", " ", " "));
+        return games.stream()
+                .sorted(Comparator.comparingInt(Gameshop::getPrice)
+                        .reversed())
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Max Price", " ", " "));
+        //
     }
 
     //제일 비싼 게임 top3 : sort 이용
     public List<Gameshop> getGameWithMaxPriceTop3(){
-        List<Gameshop> games = gameshopRepository.findAll();
-        games.sort(Comparator.comparingInt((Gameshop game) -> game.getPrice()).reversed());
-        List<Gameshop> newGames = new ArrayList<>();
-        newGames.add(games.get(0));
-        newGames.add(games.get(1));
-        newGames.add(games.get(2));
-        return newGames;
+          List<Gameshop> games = gameshopRepository.findAll();
+//        games.sort(Comparator.comparingInt(Gameshop game) -> game.getPrice()).reversed());
+//        List<Gameshop> newGames = new ArrayList<>();
+//        newGames.add(games.get(0));
+//        newGames.add(games.get(1));
+//        newGames.add(games.get(2));
+//        return newGames;
+        return games.stream()
+                .sorted(Comparator.comparingInt(Gameshop::getPrice).reversed())
+                .limit(3)
+                .collect(Collectors.toList());
     }
 
     //User
