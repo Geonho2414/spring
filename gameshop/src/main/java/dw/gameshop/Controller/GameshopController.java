@@ -39,7 +39,17 @@ public class GameshopController {
         return new ResponseEntity<>(gameshopService.updateGameshopById(id, gameshop), HttpStatus.OK);
     }
 
+    // 가장 비싼 게임
+    @GetMapping("/products/maxprice")
+    public ResponseEntity<Gameshop> getGameWithMaxPrice(){
+        return new ResponseEntity<>(gameshopService.getGameWithMaxPrice(), HttpStatus.OK);
+    }
 
+    //제일 비싼 게임 top3 : sort 이용
+    @GetMapping("/products/maxpricetop3")
+    public ResponseEntity<List<Gameshop>> getTop3MaxPriceGame(){
+        return new ResponseEntity<>(gameshopService.getGameWithMaxPriceTop3(), HttpStatus.OK);
+    }
 
     //User Controller
     //Save
@@ -47,5 +57,4 @@ public class GameshopController {
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         return new ResponseEntity<>(gameshopService.saveUser(user), HttpStatus.OK);
     }
-
 }

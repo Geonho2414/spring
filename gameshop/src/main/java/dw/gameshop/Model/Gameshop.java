@@ -20,9 +20,11 @@ public class Gameshop {
     public String text;
 
     public Gameshop() {
+        super();
     }
 
     public Gameshop(long id, String title, String genre, int price, String image, String text) {
+        super();
         this.id = id;
         this.title = title;
         this.genre = genre;

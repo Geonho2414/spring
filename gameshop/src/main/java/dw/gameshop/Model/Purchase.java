@@ -21,6 +21,7 @@ public class Purchase {
     @JoinColumn(name = "gameshop_id")
     private Gameshop gameshop;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     @Column(name = "purchase_time")
     private LocalDateTime purchaseTime;

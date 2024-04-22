@@ -1,6 +1,6 @@
 package dw.gameshop.Service;
 
-import dw.gameshop.Exception.ResourceNotFoundExceotion;
+import dw.gameshop.Exception.ResourceNotFoundException;
 import dw.gameshop.Model.Gameshop;
 import dw.gameshop.Model.User;
 import dw.gameshop.Repository.GameshopRepository;
@@ -8,6 +8,8 @@ import dw.gameshop.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class GameshopService {
     @Autowired
     GameshopRepository gameshopRepository;
+    @Autowired
     UserRepository userRepository;
 
     public GameshopService(GameshopRepository gameshopRepository, UserRepository userRepository) {
@@ -36,7 +39,7 @@ public class GameshopService {
         if(gameshop.isPresent()){
             return gameshop.get();
         }else {
-            throw new ResourceNotFoundExceotion("Gameshop", "ID", id);
+            throw new ResourceNotFoundException("Gameshop", "ID", id);
         }
     }
 
@@ -51,14 +54,37 @@ public class GameshopService {
             gameshopRepository.save(gameshop1.get());
             return gameshop1.get();
         }else {
-            throw new ResourceNotFoundExceotion("Gameshop", "ID", id);
+            throw new ResourceNotFoundException("Gameshop", "ID", id);
         }
     }
 
+    //제일 비싼 게임의 정보
+    public Gameshop getGameWithMaxPrice(){
+        List<Gameshop> games = gameshopRepository.findAll();
+        Gameshop Max = games.get(0);
+        for (int i = 0; i< games.size()-1; i++) {
+            if(Max.getPrice() > games.get(i+1).getPrice()){
+                Max = games.get(i);
+            }
+        }
+        return Max;
+    }
+
+    //제일 비싼 게임 top3 : sort 이용
+    public List<Gameshop> getGameWithMaxPriceTop3(){
+        List<Gameshop> games = gameshopRepository.findAll();
+        games.sort(Comparator.comparingInt((Gameshop game) -> game.getPrice()).reversed());
+        List<Gameshop> newGames = new ArrayList<>();
+        newGames.add(games.get(0));
+        newGames.add(games.get(1));
+        newGames.add(games.get(2));
+        return newGames;
+    }
 
     //User
     //Save
     public User saveUser(User user) {
         return userRepository.save(user);
     }
+
 }
