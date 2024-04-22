@@ -36,7 +36,7 @@ public class GameshopService {
         if(gameshop.isPresent()){
             return gameshop.get();
         }else {
-            throw new ResourceNotFoundExceotion("Gamshop", "ID", id);
+            throw new ResourceNotFoundExceotion("Gameshop", "ID", id);
         }
     }
 
@@ -51,7 +51,7 @@ public class GameshopService {
             gameshopRepository.save(gameshop1.get());
             return gameshop1.get();
         }else {
-            throw new ResourceNotFoundExceotion("Gamshop", "ID", id);
+            throw new ResourceNotFoundExceotion("Gameshop", "ID", id);
         }
     }
 

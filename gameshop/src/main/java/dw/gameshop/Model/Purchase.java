@@ -18,7 +18,7 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
-    @JoinColumn(name = "game_id")
+    @JoinColumn(name = "gameshop_id")
     private Gameshop gameshop;
     @ManyToOne
     private User user;
