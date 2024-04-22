@@ -61,13 +61,17 @@ public class GameshopService {
     //제일 비싼 게임의 정보
     public Gameshop getGameWithMaxPrice(){
         List<Gameshop> games = gameshopRepository.findAll();
-        Gameshop Max = games.get(0);
-        for (int i = 0; i< games.size()-1; i++) {
-            if(Max.getPrice() > games.get(i+1).getPrice()){
-                Max = games.get(i);
-            }
-        }
-        return Max;
+        //람다시기 아닌 일반 자바코드 사용 예
+//        Gameshop Max = games.get(0);
+//        for (int i = 0; i< games.size()-1; i++) {
+//            if(Max.getPrice() > games.get(i+1).getPrice()){
+//                Max = games.get(i);
+//            }
+//        }
+//        return Max;
+        //람다식 사용 예
+        return games.stream().sorted(Comparator.comparingInt((Gameshop g)-> g.getPrice()).reversed()).findFirst().orElseThrow(
+                () -> new ResourceNotFoundException("Max Price", " ", " "));
     }
 
     //제일 비싼 게임 top3 : sort 이용
@@ -86,5 +90,4 @@ public class GameshopService {
     public User saveUser(User user) {
         return userRepository.save(user);
     }
-
 }
