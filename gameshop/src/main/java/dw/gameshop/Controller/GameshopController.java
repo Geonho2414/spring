@@ -1,8 +1,8 @@
-package gameshop.gameshop.Controller;
+package dw.gameshop.Controller;
 
-import gameshop.gameshop.Model.Gameshop;
-import gameshop.gameshop.Model.User;
-import gameshop.gameshop.Service.GameshopService;
+import dw.gameshop.Model.Gameshop;
+import dw.gameshop.Model.User;
+import dw.gameshop.Service.GameshopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

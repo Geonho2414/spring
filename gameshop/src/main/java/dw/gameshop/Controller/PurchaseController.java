@@ -1,7 +1,7 @@
-package gameshop.gameshop.Controller;
+package dw.gameshop.Controller;
 
-import gameshop.gameshop.Model.Purchase;
-import gameshop.gameshop.Service.PurchaseService;
+import dw.gameshop.Model.Purchase;
+import dw.gameshop.Service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

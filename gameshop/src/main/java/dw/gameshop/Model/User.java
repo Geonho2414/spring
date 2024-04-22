@@ -1,4 +1,4 @@
-package gameshop.gameshop.Model;
+package dw.gameshop.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

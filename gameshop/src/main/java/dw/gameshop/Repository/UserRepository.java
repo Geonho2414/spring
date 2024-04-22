@@ -1,6 +1,6 @@
-package gameshop.gameshop.Repository;
+package dw.gameshop.Repository;
 
-import gameshop.gameshop.Model.User;
+import dw.gameshop.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

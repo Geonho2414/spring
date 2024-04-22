@@ -1,10 +1,10 @@
-package gameshop.gameshop.Service;
+package dw.gameshop.Service;
 
-import gameshop.gameshop.Exception.ResourceNotFoundExceotion;
-import gameshop.gameshop.Model.Purchase;
-import gameshop.gameshop.Model.User;
-import gameshop.gameshop.Repository.PurchaseRepository;
-import gameshop.gameshop.Repository.UserRepository;
+import dw.gameshop.Exception.ResourceNotFoundExceotion;
+import dw.gameshop.Model.Purchase;
+import dw.gameshop.Model.User;
+import dw.gameshop.Repository.PurchaseRepository;
+import dw.gameshop.Repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
