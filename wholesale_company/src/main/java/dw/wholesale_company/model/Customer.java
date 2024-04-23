@@ -1,8 +1,6 @@
 package dw.wholesale_company.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,7 @@ import lombok.Setter;
 @Entity
 @Table (name = "고객")
 public class Customer {
+    @Id
     @Column(name = "고객번호")
     private String customerId;
     @Column(name = "고객회사명")

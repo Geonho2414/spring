@@ -17,6 +17,7 @@ import java.util.Date;
 @Entity
 @Table(name = "사원")
 public class Employee {
+    @Id
     @Column(name = "사원번호")
     private String employeeId;
     @Column(name = "이름")

@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "주문")
 public class Order {
+    @Id
     @Column (name = "주문번호")
     private String orderId;
     @ManyToOne

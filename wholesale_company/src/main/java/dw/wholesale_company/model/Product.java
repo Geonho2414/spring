@@ -14,7 +14,6 @@ import lombok.Setter;
 @Table(name = "제품")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="제품번호")
     private int productId;
     @Column(name = "제품명")
