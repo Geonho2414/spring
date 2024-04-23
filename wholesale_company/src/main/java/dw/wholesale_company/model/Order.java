@@ -1,8 +1,6 @@
 package dw.wholesale_company.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +17,12 @@ import java.time.LocalDate;
 public class Order {
     @Column (name = "주문번호")
     private String orderId;
-    @Column (name = "고객번호")
-    private String customer;
-    @Column (name = "사원번호")
-    private String employee;
+    @ManyToOne
+    @JoinColumn(name = "고객번호")
+    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "사원번호")
+    private Employee employee;
     @Column (name = "주문일")
     private LocalDate orderDate;
     @Column (name = "요청일")

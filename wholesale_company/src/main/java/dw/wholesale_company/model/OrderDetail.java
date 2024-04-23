@@ -17,10 +17,12 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="주문세부번호")
     private long orderDetailId;
-    @Column(name = "주문번호")
-    private String order;
-    @Column(name = "제품번호")
-    private int product;
+    @ManyToOne
+    @JoinColumn(name = "주문번호")
+    private Order order;
+    @ManyToOne
+    @JoinColumn(name = "제품번호")
+    private Product product;
     @Column(name = "단가")
     private int unitPrice;
     @Column(name = "주문수량")

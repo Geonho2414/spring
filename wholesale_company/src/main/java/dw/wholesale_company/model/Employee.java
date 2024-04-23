@@ -1,8 +1,6 @@
 package dw.wholesale_company.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +41,7 @@ public class Employee {
     private String telephoneNo;
     @Column(name = "상사번호")
     private String managerId;
-    @Column(name = "부서번호")
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "부서번호")
+    private Department department;
 }
