@@ -7,24 +7,22 @@ import jakarta.persistence.*;
 public class Gameshop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
+    private long id;
     @Column(name = "title", nullable = false, length = 100)
-    public String title;
+    private String title;
     @Column(name = "genre", nullable = false, length = 100)
-    public String genre;
+    private String genre;
     @Column(name = "price")
-    public int price;
+    private int price;
     @Column(name = "image", length = 65535)
-    public String image;
+    private String image;
     @Column(name = "text", length = 65535)
-    public String text;
+    private String text;
 
     public Gameshop() {
-        super();
     }
 
     public Gameshop(long id, String title, String genre, int price, String image, String text) {
-        super();
         this.id = id;
         this.title = title;
         this.genre = genre;
