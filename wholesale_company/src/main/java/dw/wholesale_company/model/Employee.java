@@ -20,29 +20,29 @@ import java.util.Date;
 @Table(name = "사원")
 public class Employee {
     @Column(name = "사원번호")
-    public String employeeId;
+    private String employeeId;
     @Column(name = "이름")
-    public String name;
+    private String name;
     @Column(name = "영문이름")
-    public String englishName;
+    private String englishName;
     @Column(name = "직위")
-    public String position;
+    private String position;
     @Column(name = "성별")
-    public String gender;
+    private String gender;
     @Column(name = "생일")
-    public LocalDate birthDate;
+    private LocalDate birthDate;
     @Column(name = "입사일")
-    public LocalDate hireDate;
+    private LocalDate hireDate;
     @Column(name = "주소")
-    public String address;
+    private String address;
     @Column(name = "도시")
-    public String city;
+    private String city;
     @Column(name = "지역")
-    public String area;
+    private String area;
     @Column(name = "집전화")
-    public String telephoneNo;
+    private String telephoneNo;
     @Column(name = "상사번호")
-    public String managerId;
+    private String managerId;
     @Column(name = "부서번호")
-    public String department;
+    private String department;
 }

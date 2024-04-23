@@ -16,21 +16,21 @@ import lombok.Setter;
 @Table (name = "고객")
 public class Customer {
     @Column(name = "고객번호")
-    public String customerId;
+    private String customerId;
     @Column(name = "고객회사명")
-    public String customerName;
+    private String customerName;
     @Column(name = "담당자명")
-    public String customerEmployee;
+    private String customerEmployee;
     @Column(name = "담당자직위")
-    public String employeeTitle;
+    private String employeeTitle;
     @Column(name = "주소")
-    public String address;
+    private String address;
     @Column(name = "도시")
-    public String city;
+    private String city;
     @Column(name = "지역")
-    public String area;
+    private String area;
     @Column(name = "전화번호")
-    public String phoneNumber;
+    private String phoneNumber;
     @Column(name = "마일리지")
-    public int mileage;
+    private int mileage;
 }

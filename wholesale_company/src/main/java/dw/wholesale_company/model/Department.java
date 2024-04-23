@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name = "부서")
 public class Department {
     @Column(name = "부서번호")
-    public String departId;
+    private String departId;
     @Column(name = "부서명")
-    public String departName;
+    private String departName;
 }

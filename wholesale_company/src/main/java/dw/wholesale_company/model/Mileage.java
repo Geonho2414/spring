@@ -16,9 +16,9 @@ import lombok.Setter;
 @Table(name = "마일리지등급")
 public class Mileage {
     @Column(name = "등급명")
-    public String mileageGrade;
+    private String mileageGrade;
     @Column(name = "하한마일리지")
-    public int lowLimit;
+    private int lowLimit;
     @Column(name = "상한마일리지")
-    public int highLimit;
+    private int highLimit;
 }

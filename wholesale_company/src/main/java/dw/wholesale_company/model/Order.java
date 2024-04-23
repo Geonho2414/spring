@@ -18,16 +18,16 @@ import java.time.LocalDate;
 @Table(name = "주문")
 public class Order {
     @Column (name = "주문번호")
-    public String orderId;
+    private String orderId;
     @Column (name = "고객번호")
-    public String customer;
+    private String customer;
     @Column (name = "사원번호")
-    public String employee;
+    private String employee;
     @Column (name = "주문일")
-    public LocalDate orderDate;
+    private LocalDate orderDate;
     @Column (name = "요청일")
-    public LocalDate requestDate;
+    private LocalDate requestDate;
     @Column (name = "발송일")
-    public LocalDate shippingDate;
+    private LocalDate shippingDate;
 }
 
