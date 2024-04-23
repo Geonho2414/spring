@@ -2,6 +2,7 @@ package dw.gameshop.Controller;
 
 import dw.gameshop.Model.Review;
 import dw.gameshop.Service.ReviewService;
+import dw.gameshop.dto.ReviewDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -30,5 +31,11 @@ public class ReviewController {
     @GetMapping("/review")
     public ResponseEntity<List<Review>> getReviewAll() {
         return new ResponseEntity<>(reviewService.getReviewAll(),HttpStatus.OK);
+    }
+
+    //Dto
+    @GetMapping("/reviews/dto")
+    public ResponseEntity<List<ReviewDto>> getReviewAllByDto(){
+        return new ResponseEntity<>(reviewService.getReviewAllByDto(), HttpStatus.OK);
     }
 }
