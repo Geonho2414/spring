@@ -38,15 +38,4 @@ public class ProductService {
         List<Product> productList = productRepository.findAll();
         return productList.stream().filter(product -> product.getProductName().contains(str.toLowerCase())).collect(Collectors.toList());
     }
-
-//    public List<Product> getProductBySearch2(String str) {
-//        List<Product> productList = productRepository.findAll();
-//        ArrayList<String> KKK = new ArrayList();
-//        for (int i = 0; i < productList.size(); i++) {
-//            if (productList.contains(str)) {
-//                KKK = KKK.add();
-//            }
-//        }
-//        return productList;
-//    }
 }
