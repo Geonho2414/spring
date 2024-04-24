@@ -30,4 +30,10 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>> getAllEmployee(){
         return new ResponseEntity<>(employeeService.getAllEmployee(), HttpStatus.OK);
     }
+
+    //실습 : 사원의 직위가 '사원'인 사람들 중에서 가장 최근에 입사한 사원의 정보
+    @GetMapping("/employee/HireLatest")
+    public ResponseEntity<Employee> getEmployeeByHireLatest() {
+        return new ResponseEntity<>(employeeService.getEmployeeByHireLatest(), HttpStatus.OK);
+    }
 }

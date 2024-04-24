@@ -28,8 +28,8 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
     }
 
-    @GetMapping("/products/inventory/under/{int}")
-    public ResponseEntity<List<Product>> grtProductByInventoryUnder(@PathVariable int num){
+    @GetMapping("/products/inventory/under/{num}")
+    public ResponseEntity<List<Product>> getProductByInventoryUnder(@PathVariable int num) {
         return new ResponseEntity<>(productService.grtProductByInventoryUnder(num), HttpStatus.OK);
     }
 }

@@ -30,4 +30,11 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> getAllCustomer() {
         return new ResponseEntity<>(customerService.getAllCustomer(), HttpStatus.OK);
     }
+
+    //실습 : 고객 전체의 평균 마일리지보다 마일리지가 큰 고객 정보
+    @GetMapping("/customers/highmilethanavg")
+    public ResponseEntity<List<Customer>> getCustomerWithHighMileThanAvg() {
+        return new ResponseEntity<>(customerService.getCustomerWithHighMileThenAvg(),
+                HttpStatus.OK);
+    }
 }
