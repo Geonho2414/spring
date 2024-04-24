@@ -28,8 +28,15 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
     }
 
+    //실습 : 제품의 재고가 50개 미만인 제품 정보 얻기
     @GetMapping("/products/inventory/under/{num}")
     public ResponseEntity<List<Product>> getProductByInventoryUnder(@PathVariable int num) {
         return new ResponseEntity<>(productService.grtProductByInventoryUnder(num), HttpStatus.OK);
+    }
+
+    //실습 : 제품 중에서 제품명을 매개변수로 받아서 처리
+    @GetMapping("/products/search/{str}")
+    public ResponseEntity<List<Product>> getProductBySearch(@PathVariable String str) {
+        return new ResponseEntity<>(productService.getProductBySearch(str), HttpStatus.OK);
     }
 }

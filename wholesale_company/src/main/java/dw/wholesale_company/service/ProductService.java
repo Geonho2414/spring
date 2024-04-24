@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,4 +32,21 @@ public class ProductService {
         List<Product> productList = productRepository.findAll();
         return productList.stream().filter(p -> p.getInventory() < num).collect(Collectors.toList());
     }
+
+    //실습 : 제품 중에서 제품명을 매개변수로 받아서 처리
+    public List<Product> getProductBySearch(String str) {
+        List<Product> productList = productRepository.findAll();
+        return productList.stream().filter(product -> product.getProductName().contains(str.toLowerCase())).collect(Collectors.toList());
+    }
+
+//    public List<Product> getProductBySearch2(String str) {
+//        List<Product> productList = productRepository.findAll();
+//        ArrayList<String> KKK = new ArrayList();
+//        for (int i = 0; i < productList.size(); i++) {
+//            if (productList.contains(str)) {
+//                KKK = KKK.add();
+//            }
+//        }
+//        return productList;
+//    }
 }
