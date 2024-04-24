@@ -1,6 +1,5 @@
 package dw.wholesale_company.service;
 
-import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Department;
 import dw.wholesale_company.repository.DepartmentRepository;
 import jakarta.transaction.Transactional;
