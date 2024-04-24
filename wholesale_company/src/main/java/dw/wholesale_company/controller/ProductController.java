@@ -41,5 +41,10 @@ public class ProductController {
     }
     //실습 : 제품 단가가 5,000원 이상 10,000원 이하인 제품
     // postman : localhost:8082/products/price?low=9000&high=9999
-    @GetMapping("/products/price/search/")
+    @GetMapping("/products/price")
+    public ResponseEntity<List<Product>> getProductByPriceRange(@RequestParam int low,
+                                                                @RequestParam int high) {
+        return new ResponseEntity<>(productService.getProductByPriceRange(low, high),
+                HttpStatus.OK);
+    }
 }
