@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Transactional
 @Service
+@Transactional
 public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
