@@ -38,8 +38,17 @@ public class OrderController {
 
     // 2020년 4월 9일에 주문한 고객의 모든 정보를 보이시오.
     // .map 사용
+    //내 답
+    /*
     @GetMapping("/orders/date/customers/{date}")
     public ResponseEntity<List<Customer>> getCustomerByOrderDate(@PathVariable LocalDate date) {
         return new ResponseEntity<>(orderService.getCustomerByOrderDate(date), HttpStatus.OK);
+    }
+    */
+    // 선생님 답
+    @GetMapping("/orders/orderdate/{orderDate}")
+    public ResponseEntity<List<Customer>> getCustomerByOrderDate(@PathVariable LocalDate orderDate) {
+        return new ResponseEntity<>(orderService.getCustomerByOrderDate(orderDate),
+                HttpStatus.OK);
     }
 }

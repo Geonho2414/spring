@@ -40,10 +40,19 @@ public class OrderService {
 
     // 2020년 4월 9일에 주문한 고객의 모든 정보를 보이시오.
     // .map 사용
+    // 내 답
+    /*
     public List<Customer> getCustomerByOrderDate(LocalDate date) {
         List<Order> orderList = orderRepository.findAll();
         return orderList.stream()
                 .filter(a -> a.getOrderDate().equals(date))
                 .map(c->c.getCustomer()).collect(Collectors.toList());
+    }
+     */
+    // 선생님 답
+    public List<Customer> getCustomerByOrderDate(LocalDate orderDate) {
+        List<Order> orders = orderRepository.findByOrderDate(orderDate);
+        return orders.stream().map(order -> order.getCustomer())
+                .collect(Collectors.toList());
     }
 }
