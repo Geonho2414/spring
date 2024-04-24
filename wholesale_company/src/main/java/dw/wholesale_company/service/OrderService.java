@@ -1,5 +1,6 @@
 package dw.wholesale_company.service;
 
+import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Order;
 import dw.wholesale_company.repository.OrderRepository;
 import jakarta.transaction.Transactional;
@@ -35,5 +36,14 @@ public class OrderService {
     public List<Order> getOrderByDateAfter(LocalDate date) {
         List<Order> orders = orderRepository.findAll();
         return orders.stream().filter(a -> a.getOrderDate().compareTo(date)>0).collect(Collectors.toList());
+    }
+
+    // 2020년 4월 9일에 주문한 고객의 모든 정보를 보이시오.
+    // .map 사용
+    public List<Customer> getCustomerByOrderDate(LocalDate date) {
+        List<Order> orderList = orderRepository.findAll();
+        return orderList.stream()
+                .filter(a -> a.getOrderDate().equals(date))
+                .map(c->c.getCustomer()).collect(Collectors.toList());
     }
 }
