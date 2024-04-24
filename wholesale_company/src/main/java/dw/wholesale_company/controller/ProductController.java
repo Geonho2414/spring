@@ -5,10 +5,7 @@ import dw.wholesale_company.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,10 @@ public class ProductController {
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProduct(){
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/products/inventory/under/{int}")
+    public ResponseEntity<List<Product>> grtProductByInventoryUnder(@PathVariable int num){
+        return new ResponseEntity<>(productService.grtProductByInventoryUnder(num), HttpStatus.OK);
     }
 }
