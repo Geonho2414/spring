@@ -39,12 +39,22 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProductBySearch(@PathVariable String str) {
         return new ResponseEntity<>(productService.getProductBySearch(str), HttpStatus.OK);
     }
+
     //실습 : 제품 단가가 5,000원 이상 10,000원 이하인 제품
     // postman : localhost:8082/products/price?low=9000&high=9999
     @GetMapping("/products/price")
     public ResponseEntity<List<Product>> getProductByPriceRange(@RequestParam int low,
                                                                 @RequestParam int high) {
         return new ResponseEntity<>(productService.getProductByPriceRange(low, high),
+                HttpStatus.OK);
+    }
+
+    //실습 : 제품 제품번호가 1,2,4,7,11,20 인 제품의 모든 정보를 보이시오
+    //포스트맨에서 배열형태로 요청함
+    //본문에 [1,2,4,7,11,20] 형태로 요청
+    @GetMapping("/products/idlist")
+    public ResponseEntity<List<Product>> getProductByIdWithList(@RequestBody List<Long> idList) {
+        return new ResponseEntity<>(productService.getProductByIdWithList(idList),
                 HttpStatus.OK);
     }
 }

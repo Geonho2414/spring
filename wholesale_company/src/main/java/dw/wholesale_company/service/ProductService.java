@@ -1,5 +1,6 @@
 package dw.wholesale_company.service;
 
+import dw.wholesale_company.model.Employee;
 import dw.wholesale_company.model.Product;
 import dw.wholesale_company.repository.ProductRepository;
 import jakarta.transaction.Transactional;
@@ -44,5 +45,38 @@ public class ProductService {
     public List<Product> getProductByPriceRange(int lowPrice, int highPrice) {
         List<Product> productList = productRepository.findAll();
         return  productList.stream().filter(product -> product.getUnitPrice() >= lowPrice && product.getUnitPrice() <= highPrice).collect(Collectors.toList());
+    }
+
+    //실습 : 제품 제품번호가 1, 2, 4, 7, 11, 20인 제품의 모든 정보를 보이시오.
+    public List<Product> getProductByIdWithList(List<Long> idList) {
+        List<Product> productList = productRepository.findAll();
+//        List<Product> newProducts = new ArrayList<>();
+//        for(int i=0; i<productList.size(); i++) {
+//            for(int j=0; j< idList.size(); j++) {
+//                if (productList.get(i).getProductId() == idList.get(j)) {
+//                    newProducts.add(productList.get(i));
+//                }
+//            }
+//        }
+//        return newProducts;
+        return productList.stream().filter(product -> idList.contains(product.getProductId()))
+                .collect(Collectors.toList());
+    }
+
+    //실습 : 제품 재고금액이 높은 상위 10개 제품
+    //(재고금액 = 단가*재고)
+    private double calculateInventoryValue(Product product) {
+        return product.getUnitPrice() * product.getInventory();
+    }
+    public List<Product> getTop10ProductsByInventoryValue() {
+        List<Product> productList = productRepository.findAll();
+
+        // 재고금액(단가 * 재고) 기준으로 제품을 내림차순으로 정렬하고 상위 10개 제품을 선택합니다.
+        List<Product> top10Products = productList.stream()
+                .sorted(Comparator.comparingDouble(product -> calculateInventoryValue(product)).reversed())
+                .limit(10)
+                .collect(Collectors.toList());
+
+        return top10Products;
     }
 }
