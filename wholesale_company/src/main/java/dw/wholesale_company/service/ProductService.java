@@ -38,4 +38,11 @@ public class ProductService {
         List<Product> productList = productRepository.findAll();
         return productList.stream().filter(product -> product.getProductName().contains(str.toLowerCase())).collect(Collectors.toList());
     }
+
+    //실습 : 제품 단가가 5,000원 이상 10,000원 이하인 제품
+    // postman : localhost:8082/products/price?low=9000&high=9999
+    public List<Product> getProductByPriceRange(int lowPrice, int highPrice) {
+        List<Product> productList = productRepository.findAll();
+        return  productList.stream().filter(product -> product.getUnitPrice() >= lowPrice && product.getUnitPrice() <= highPrice).collect(Collectors.toList());
+    }
 }

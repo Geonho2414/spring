@@ -39,4 +39,7 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProductBySearch(@PathVariable String str) {
         return new ResponseEntity<>(productService.getProductBySearch(str), HttpStatus.OK);
     }
+    //실습 : 제품 단가가 5,000원 이상 10,000원 이하인 제품
+    // postman : localhost:8082/products/price?low=9000&high=9999
+    @GetMapping("/products/price/search/")
 }
