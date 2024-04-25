@@ -1,5 +1,6 @@
 package dw.wholesale_company.service;
 
+import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Mileage;
 import dw.wholesale_company.repository.MileageRepository;
 import jakarta.transaction.Transactional;
