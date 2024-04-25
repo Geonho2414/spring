@@ -13,13 +13,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class GameService {
+public class GameshopService {
     @Autowired
     GameRepository gameshopRepository;
     @Autowired
     UserRepository userRepository;
 
-    public GameService(GameRepository gameshopRepository, UserRepository userRepository) {
+    public GameshopService(GameRepository gameshopRepository, UserRepository userRepository) {
         this.gameshopRepository = gameshopRepository;
         this.userRepository = userRepository;
     }

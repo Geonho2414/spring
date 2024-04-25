@@ -1,5 +1,7 @@
 package dw.gameshop.config;
 
+import dw.gameshop.exception.MyAccessDeniedHandler;
+import dw.gameshop.exception.MyAuthenticationEntryPoint;
 import dw.gameshop.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
