@@ -1,42 +1,40 @@
 package dw.gameshop.Service;
 
 import dw.gameshop.Exception.ResourceNotFoundException;
-import dw.gameshop.Model.Gameshop;
+import dw.gameshop.Model.Game;
 import dw.gameshop.Model.User;
-import dw.gameshop.Repository.GameshopRepository;
+import dw.gameshop.Repository.GameRepository;
 import dw.gameshop.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class GameshopService {
+public class GameService {
     @Autowired
-    GameshopRepository gameshopRepository;
+    GameRepository gameshopRepository;
     @Autowired
     UserRepository userRepository;
 
-    public GameshopService(GameshopRepository gameshopRepository, UserRepository userRepository) {
+    public GameService(GameRepository gameshopRepository, UserRepository userRepository) {
         this.gameshopRepository = gameshopRepository;
         this.userRepository = userRepository;
     }
 
-    public Gameshop saveGameshop(Gameshop gameshop){
+    public Game saveGameshop(Game gameshop){
         gameshopRepository.save(gameshop);
         return gameshop;
     }
 
-    public List<Gameshop> getAllGames(){
+    public List<Game> getAllGames(){
         return gameshopRepository.findAll();
     }
 
-    public Gameshop getGameshopById(long id) {
-        Optional<Gameshop> gameshop = gameshopRepository.findById(id);
+    public Game getGameshopById(long id) {
+        Optional<Game> gameshop = gameshopRepository.findById(id);
         if(gameshop.isPresent()){
             return gameshop.get();
         }else {
@@ -44,8 +42,8 @@ public class GameshopService {
         }
     }
 
-    public Gameshop updateGameshopById(long id, Gameshop gameshop) {
-        Optional<Gameshop> gameshop1 = gameshopRepository.findById(id);
+    public Game updateGameshopById(long id, Game gameshop) {
+        Optional<Game> gameshop1 = gameshopRepository.findById(id);
         if (gameshop1.isPresent()){
             gameshop1.get().setTitle(gameshop.getTitle());
             gameshop1.get().setGenre(gameshop.getGenre());
@@ -60,8 +58,8 @@ public class GameshopService {
     }
 
     //제일 비싼 게임의 정보
-    public Gameshop getGameWithMaxPrice(){
-        List<Gameshop> games = gameshopRepository.findAll();
+    public Game getGameWithMaxPrice(){
+        List<Game> games = gameshopRepository.findAll();
         //람다시기 아닌 일반 자바코드 사용 예
 //        Gameshop Max = games.get(0);
 //        for (int i = 0; i< games.size()-1; i++) {
@@ -81,8 +79,8 @@ public class GameshopService {
     }
 
     //제일 비싼 게임 top3 : sort 이용
-    public List<Gameshop> getGameWithMaxPriceTop3(){
-          List<Gameshop> games = gameshopRepository.findAll();
+    public List<Game> getGameWithMaxPriceTop3(){
+          List<Game> games = gameshopRepository.findAll();
           // 자바코드 예
 //        games.sort(Comparator.comparingInt(Gameshop game) -> game.getPrice()).reversed());
 //        List<Gameshop> newGames = new ArrayList<>();

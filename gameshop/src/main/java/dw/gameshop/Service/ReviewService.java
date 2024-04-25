@@ -1,7 +1,7 @@
 package dw.gameshop.Service;
 
 import dw.gameshop.Model.Review;
-import dw.gameshop.Repository.GameshopRepository;
+import dw.gameshop.Repository.GameRepository;
 import dw.gameshop.Repository.ReviewRepository;
 import dw.gameshop.Repository.UserRepository;
 import dw.gameshop.dto.ReviewDto;
@@ -24,11 +24,11 @@ public class ReviewService {
     @Autowired
     ReviewRepository reviewRepository;
     @Autowired
-    GameshopRepository gameshopRepository;
+    GameRepository gameshopRepository;
     @Autowired
     UserRepository userRepository;
 
-    public ReviewService(ReviewRepository reviewRepository, GameshopRepository gameshopRepository, UserRepository userRepository) {
+    public ReviewService(ReviewRepository reviewRepository, GameRepository gameshopRepository, UserRepository userRepository) {
         this.reviewRepository = reviewRepository;
         this.gameshopRepository = gameshopRepository;
         this.userRepository = userRepository;

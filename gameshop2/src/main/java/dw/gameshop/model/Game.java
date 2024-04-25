@@ -1,28 +1,30 @@
-package dw.gameshop.Model;
+package dw.gameshop.model;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "gameshopdb")
-public class Gameshop {
+@Table(name="games")
+public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(length = 100)
     private String title;
-    @Column(name = "genre", nullable = false, length = 100)
+    @Column(length = 100)
     private String genre;
-    @Column(name = "price")
+    @Column
     private int price;
-    @Column(name = "image", length = 65535)
+    @Column(length = 65535)
     private String image;
-    @Column(name = "text", length = 65535)
+    @Column(length = 65535)
     private String text;
 
-    public Gameshop() {
+    public Game() {
+        super();
     }
 
-    public Gameshop(long id, String title, String genre, int price, String image, String text) {
+    public Game(long id, String title, String genre, int price, String image, String text) {
+        super();
         this.id = id;
         this.title = title;
         this.genre = genre;
@@ -79,5 +81,3 @@ public class Gameshop {
         this.text = text;
     }
 }
-
-
