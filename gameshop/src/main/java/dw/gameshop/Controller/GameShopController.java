@@ -2,6 +2,7 @@ package dw.gameshop.controller;
 
 import dw.gameshop.model.Game;
 import dw.gameshop.model.User;
+import dw.gameshop.service.GameShopService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

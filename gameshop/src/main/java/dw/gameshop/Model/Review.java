@@ -1,4 +1,4 @@
-package dw.gameshop.Model;
+package dw.gameshop.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,26 +10,34 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 @Entity
-@Table(name = "review")
+@Table(name="review")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
-    @JoinColumn(name = "game")
-    private Game gameshop;
+    @JoinColumn(name="game_id")
+    private Game game;
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name="user_id")
     private User user;
-    @Column(name = "point")
+    @Column(name="point", nullable = false)
     private int point;
-    @Column(name = "review_text", length = 65535)
+    @Column(name="review_text", length=65535)
     private String reviewText;
-    //한번 생성된 날짜는 바뀌면 안되기 때문에 updatable = false 는
-    //업데이트가 불가능하게 해준다.
-    @Column(name = "created_at", updatable = false)
+
+    @Column(name="created_at", updatable = false)
     private LocalDateTime createdAt;
 }
+
+
+
+
+
+
+
+
+

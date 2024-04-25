@@ -1,106 +1,116 @@
-package dw.gameshop.Service;
+package dw.gameshop.service;
 
-import dw.gameshop.Exception.ResourceNotFoundException;
-import dw.gameshop.Model.Game;
-import dw.gameshop.Model.User;
-import dw.gameshop.Repository.GameRepository;
-import dw.gameshop.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import dw.gameshop.exception.ResourceNotFoundException;
+import dw.gameshop.model.Game;
+import dw.gameshop.model.User;
+import dw.gameshop.repository.GameShopRepository;
+import dw.gameshop.repository.UserRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class GameshopService {
-    @Autowired
-    GameRepository gameshopRepository;
-    @Autowired
+public class GameShopService {
+    GameShopRepository gameShopRepository;
     UserRepository userRepository;
 
-    public GameshopService(GameRepository gameshopRepository, UserRepository userRepository) {
-        this.gameshopRepository = gameshopRepository;
+    public GameShopService(GameShopRepository gameShopRepository, UserRepository userRepository) {
+        this.gameShopRepository = gameShopRepository;
         this.userRepository = userRepository;
     }
 
-    public Game saveGameshop(Game gameshop){
-        gameshopRepository.save(gameshop);
-        return gameshop;
+    public List<Game> getAllGames() {
+        return gameShopRepository.findAll();
     }
 
-    public List<Game> getAllGames(){
-        return gameshopRepository.findAll();
-    }
-
-    public Game getGameshopById(long id) {
-        Optional<Game> gameshop = gameshopRepository.findById(id);
-        if(gameshop.isPresent()){
-            return gameshop.get();
+    public Game getGameById(long id) {
+        Optional<Game> gameOptional = gameShopRepository.findById(id);
+        if(gameOptional.isPresent()) {
+            return gameOptional.get();
         }else {
-            throw new ResourceNotFoundException("Gameshop", "ID", id);
+            throw new ResourceNotFoundException("Game", "ID", id);
         }
     }
 
-    public Game updateGameshopById(long id, Game gameshop) {
-        Optional<Game> gameshop1 = gameshopRepository.findById(id);
-        if (gameshop1.isPresent()){
-            gameshop1.get().setTitle(gameshop.getTitle());
-            gameshop1.get().setGenre(gameshop.getGenre());
-            gameshop1.get().setImage(gameshop.getImage());
-            gameshop1.get().setPrice(gameshop.getPrice());
-            gameshop1.get().setText(gameshop.getText());
-            gameshopRepository.save(gameshop1.get());
-            return gameshop1.get();
+    public Game updateGameById(long id, Game game) {
+        Optional<Game> gameOptional = gameShopRepository.findById(id);
+        if(gameOptional.isPresent()) {
+            Game temp = gameOptional.get();
+            temp.setTitle(game.getTitle());
+            temp.setGenre(game.getGenre());
+            temp.setPrice(game.getPrice());
+            temp.setImage(game.getImage());
+            temp.setText(game.getText());
+            gameShopRepository.save(temp);
+            return temp;
         }else {
-            throw new ResourceNotFoundException("Gameshop", "ID", id);
+            throw new ResourceNotFoundException("Game", "ID", id);
         }
+    }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 
     //제일 비싼 게임의 정보
-    public Game getGameWithMaxPrice(){
-        List<Game> games = gameshopRepository.findAll();
-        //람다시기 아닌 일반 자바코드 사용 예
-//        Gameshop Max = games.get(0);
-//        for (int i = 0; i< games.size()-1; i++) {
-//            if(Max.getPrice() > games.get(i+1).getPrice()){
-//                Max = games.get(i);
+    public Game getGameWithMaxPrice() {
+        List<Game> games = gameShopRepository.findAll();
+        // 람다식이 아닌 일반 자바코드 사용 예
+//        if (games.size() <= 0) {
+//            throw new ResourceNotFoundException("Max Price", " ", " ");
+//        }
+//        Game max = games.get(0);
+//        for (int i=0; i< games.size()-1; i++) {
+//            if (max.getPrice() < games.get(i+1).getPrice()) {
+//                max = games.get(i+1);
 //            }
 //        }
-//        return Max;
-        //람다식 사용 예
+//        return max;
+        // 람다식 사용 예
 //        return games.stream()
-//                .sorted(Comparator.comparingInt(Gameshop::getPrice)
-//                        .reversed())
+//                .sorted(Comparator.comparingInt(Game::getPrice)
+//                .reversed())
 //                .findFirst()
 //                .orElseThrow(() -> new ResourceNotFoundException("Max Price", " ", " "));
-        //JPQL 사용 예
-        return gameshopRepository.getGameWithMaxPrice();
+        // JPQL 사용 예
+        return gameShopRepository.getGameWithMaxPrice();
     }
 
-    //제일 비싼 게임 top3 : sort 이용
-    public List<Game> getGameWithMaxPriceTop3(){
-          List<Game> games = gameshopRepository.findAll();
-          // 자바코드 예
-//        games.sort(Comparator.comparingInt(Gameshop game) -> game.getPrice()).reversed());
-//        List<Gameshop> newGames = new ArrayList<>();
+    //제일 비싼 게임 Top 3
+    public List<Game> getGameWithMaxPriceTop3() {
+        List<Game> games = gameShopRepository.findAll();
+        // 람다식이 아닌 일반 자바코드 사용 예
+//        games.sort(Comparator.comparingInt((Game g) -> g.getPrice()).reversed());
+//        List<Game> newGames = new ArrayList<>();
 //        newGames.add(games.get(0));
 //        newGames.add(games.get(1));
 //        newGames.add(games.get(2));
 //        return newGames;
-        // 람다식 예
+        // 람다식 사용 예
 //        return games.stream()
-//                .sorted(Comparator.comparingInt(Gameshop::getPrice).reversed())
+//                .sorted(Comparator.comparingInt(Game::getPrice).reversed())
 //                .limit(3)
 //                .collect(Collectors.toList());
-        //JPQL 사용 예
-        return gameshopRepository.getGameWithMaxPriceTop3()
+        // JPQL 사용 예
+        return gameShopRepository.getGameWithMaxPriceTop3()
                 .stream().limit(3).collect(Collectors.toList());
     }
-
-    //User
-    //Save
-    public User saveUser(User user) {
-        return userRepository.save(user);
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

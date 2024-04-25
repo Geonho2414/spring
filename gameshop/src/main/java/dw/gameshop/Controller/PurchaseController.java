@@ -1,8 +1,9 @@
-package dw.gameshop.Controller;
+package dw.gameshop.controller;
 
-import dw.gameshop.Model.Purchase;
-import dw.gameshop.Service.PurchaseService;
+import dw.gameshop.model.Purchase;
+import dw.gameshop.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,23 +15,34 @@ public class PurchaseController {
     @Autowired
     PurchaseService purchaseService;
 
-    @PostMapping("/product/purchase")
+    @PostMapping("/products/purchase")
     public Purchase savePurchase(@RequestBody Purchase purchase) {
         return purchaseService.savePurchase(purchase);
     }
 
-    @GetMapping("/product/purchase")
+    @GetMapping("/products/purchase")
     public List<Purchase> getAllPurchases() {
         return purchaseService.getAllPurchases();
     }
 
-    @GetMapping("/product/purchase/{userId}")
+    @GetMapping("/products/purchase/id/{userId}")
     public List<Purchase> getPurchaseListByUser(@PathVariable String userId) {
         return purchaseService.getPurchaseListByUser(userId);
     }
 
-    @GetMapping("/product/name/{userName}")
-    public ResponseEntity<List<Purchase>> getPurchaseListByUserName(@PathVariable String userName) {
-        return new ResponseEntity<>(purchaseService.getPurchaseListByUserName(userName), HttpStatus.OK);
+    @GetMapping("/products/purchase/name/{userName}")
+    public ResponseEntity<List<Purchase>> getPurchaseListByUserName(
+            @PathVariable String userName) {
+        return new ResponseEntity<>(purchaseService.getPurchaseListByUserName(userName),
+                HttpStatus.OK);
     }
+
 }
+
+
+
+
+
+
+
+

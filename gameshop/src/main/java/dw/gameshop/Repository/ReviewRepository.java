@@ -1,7 +1,7 @@
-package dw.gameshop.Repository;
+package dw.gameshop.repository;
 
-import dw.gameshop.Model.Review;
+import dw.gameshop.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ReviewRepository extends JpaRepository<Review,Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }
