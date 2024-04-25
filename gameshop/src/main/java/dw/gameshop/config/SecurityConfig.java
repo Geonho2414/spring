@@ -39,14 +39,16 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))   // 항상 세션 ID를 사용하겠다.
                 .csrf(AbstractHttpConfigurer::disable)
+                    // csrf : 다른 사이트에서 내 사이트로 접속하는 것을 막음 우리는 더 고급보안을 사용하기에 disable 해놓자!
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(new MyAuthenticationEntryPoint())
-                        .accessDeniedHandler(new MyAccessDeniedHandler()))
+                        .authenticationEntryPoint(new MyAuthenticationEntryPoint())   // 인증실패
+                        .accessDeniedHandler(new MyAccessDeniedHandler()))  // 권한실패
                 .build();
     }
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService) throws Exception {
+        // BCrypt : <매우중요!!>  암호화 해시 함수 = 디코딩(풀기)이 불가능한 암호화 방법
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailService);
         authProvider.setPasswordEncoder(bCryptPasswordEncoder);
