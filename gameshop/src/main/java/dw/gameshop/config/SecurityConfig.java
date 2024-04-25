@@ -25,6 +25,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // 중요! filterChain : 보안사항을 체크하는 필터가 모아져 있는것!
         return http
                 .authorizeRequests(auth -> auth
                         .requestMatchers(
