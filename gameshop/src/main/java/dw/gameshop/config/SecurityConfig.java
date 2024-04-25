@@ -28,15 +28,16 @@ public class SecurityConfig {
         // 중요! filterChain : 보안사항을 체크하는 필터가 모아져 있는것!
         return http
                 .authorizeRequests(auth -> auth
-                        .requestMatchers(
+                        .requestMatchers(  // 예외 : 이 안에 들어있는것만 인증을 허용하겠다.
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
                                 new AntPathRequestMatcher("/login")
                         ).permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))
+                        .anyRequest().authenticated())  // 스프링 시큐리티의 디폴트 상태 : 어떠한 요청이든 인증을 받겠다.
+                .formLogin(form->form.loginPage("/login")   // 내가 직접 만든 로그인 화면을 사용하겠다.
+                        .defaultSuccessUrl("/articles"))   // 로그인이 성공하면 이 주소로 이동하라
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))   // 항상 세션 ID를 사용하겠다.
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(new MyAuthenticationEntryPoint())
