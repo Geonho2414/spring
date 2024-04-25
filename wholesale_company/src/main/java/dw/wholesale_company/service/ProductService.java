@@ -65,13 +65,13 @@ public class ProductService {
 
     //실습 : 제품 재고금액이 높은 상위 10개 제품
     //(재고금액 = 단가*재고)
-//    //미해결
-//    public List<Product> getTop10ProductsByValue() {
-//        List<Product> productList = productRepository.findAll();
-//        List<Product> top10Products = productList.stream()
-//                .sorted(Comparator.comparing(productList.).reversed())
-//                .limit(10)
-//                .collect(Collectors.toList());
-//        return top10Products;
-//    }
+    public List<Product> getTop10ProductsByValue(int limit) {
+        List<Product> productList = productRepository.findAll();
+        List<Product> top10Products = productList.stream()
+                .sorted(Comparator.comparing((Product p)-> p.getUnitPrice() * p.getInventory()).reversed())
+                .limit(limit)
+                .collect(Collectors.toList());
+        return top10Products;
+    }
+
 }
