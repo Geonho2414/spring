@@ -28,8 +28,8 @@ public class TestController {
     public ResponseEntity<Integer> getOrderNumByOrderYear(@PathVariable int orderYear) {
         return ResponseEntity.ok(testService.getOrderNumByOrderYear(orderYear));
     }
-    @GetMapping("/test/4/{position}/{year}")
-    public ResponseEntity<List<Employee>> getEmployeeByPositionAndYear(@PathVariable String position, @PathVariable int year) {
-        return ResponseEntity.ok(testService.getEmployeeByPositionAndYear(position, year));
-    }
+//    @GetMapping("/test/4/{position}/{year}")
+//    public ResponseEntity<List<Employee>> getEmployeeByPositionAndYear(@PathVariable String position, @PathVariable int year) {
+//        return ResponseEntity.ok(testService.getEmployeeByPositionAndYear(position, year));
+//    }
 }
