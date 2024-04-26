@@ -55,7 +55,7 @@ public class CustomerService {
         }
         List<Customer> customers = customerRepository.findAll();
         return customers.stream()
-                .filter(customer -> customer.getMileage() >= mileageOptional.get().getLowLimit() 
+                .filter(customer -> customer.getMileage() >= mileageOptional.get().getLowLimit()
                         && customer.getMileage() <= mileageOptional.get().getHighLimit())
                 .collect(Collectors.toList());
     }
