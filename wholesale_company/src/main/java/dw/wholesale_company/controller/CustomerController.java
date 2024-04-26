@@ -5,10 +5,7 @@ import dw.wholesale_company.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +33,11 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> getCustomerWithHighMileThanAvg() {
         return new ResponseEntity<>(customerService.getCustomerWithHighMileThenAvg(),
                 HttpStatus.OK);
+    }
+
+    //실습 : 마일리지 등급별로 고객수를 보이시오
+    @GetMapping("/customers/grade/{grade}")
+    public ResponseEntity<List<Customer>> getCustomerByMileageGrade(@PathVariable String grade){
+        return new ResponseEntity<>(customerService.getCustomerByMileageGrade(grade), HttpStatus.OK);
     }
 }
