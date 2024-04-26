@@ -1,6 +1,16 @@
 package dw.gameshop;
 
 /*
+[ Spring 시스템 ]
+데이터 베이스를 생성하는 성실 정의 : Model
+데이터 베이스를 JPA 를 통해 사용을 할 수 있도록 호출 : repository
+repository 로 데이터를 불러와 가공하여 기능을 구현 : Service
+Service 의 데이터와 기능을 불러와 톰캣(Servlet Container)을 통해서 웹과 통신 : controller
+기능 중 발생하는 모든 예외를 모아서 처리 : exception
+
+
+
+
 [ tomcat ]
 Servlet Container 이다. 자바와 웹 브라우저 사이의 통신을 담당한다.
 
@@ -18,7 +28,7 @@ Servlet Container 이다. 자바와 웹 브라우저 사이의 통신을 담당�
 
 // 이론
 인증/인가
-인증 : 대표 인증방식 
+인증 : 대표 인증방식
 1. 세션
   - username 과 password 로 로그인을 하면 세션이 만들어진다 / 세션 ID 는 만료기간이 있으며, 만료기간 후에는 로그아웃이 된다.
   - 세션은 고유의 세션 ID로 서버와 사용자간 요청하는 모든 패킷애 포함되어 요청을 처리한다. (Cookie 라고 부름)
