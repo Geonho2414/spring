@@ -1,5 +1,6 @@
 package dw.wholesale_company.service;
 
+import dw.wholesale_company.exception.ResourceNotFoundException;
 import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Mileage;
 import dw.wholesale_company.repository.CustomerRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,19 +48,15 @@ public class CustomerService {
     }
 
     //실습 : 마일리지 등급별로 고객수를 보이시오
-//    public List<Customer> getCustomerByMileageGrade(String grade) {
-//        List<Customer> customers = customerRepository.findAll();
-//        List<Mileage> mileages = mileageRepository.findAll();
-//        List<Mileage> KK = new ArrayList(){};
-//        int sum = 0;
-//        for (int i = 0; i < customers.size(); i ++){
-//            for (int j = 0; j < mileages.size(); j++)
-//            if (mileages.get(j).getHighLimit() > customers.get(i).getMileage()) {
-//                if (mileages.get(j).getLowLimit() > customers.get(i).getMileage()) {
-//                    sum++;
-//                }
-//            }
-//        }
-//        return
-//    }
+    public List<Customer> getCustomerByMileageGrade(String grade) {
+        Optional<Mileage> mileageOptional = mileageRepository.findById(grade);
+        if (mileageOptional.isEmpty()) {
+            throw new ResourceNotFoundException("Mileage", "Grade", grade);
+        }
+        List<Customer> customers = customerRepository.findAll();
+        return customers.stream()
+                .filter(customer -> customer.getMileage() >= mileageOptional.get().getLowLimit() 
+                        && customer.getMileage() <= mileageOptional.get().getHighLimit())
+                .collect(Collectors.toList());
+    }
 }

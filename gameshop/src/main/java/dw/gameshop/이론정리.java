@@ -7,16 +7,12 @@ package dw.gameshop;
 repository 로 데이터를 불러와 가공하여 기능을 구현 : Service
 Service 의 데이터와 기능을 불러와 톰캣(Servlet Container)을 통해서 웹과 통신 : controller
 기능 중 발생하는 모든 예외를 모아서 처리 : exception
-
+[ Dto ]
 
 
 
 [ tomcat ]
 Servlet Container 이다. 자바와 웹 브라우저 사이의 통신을 담당한다.
-
-
-
-[ Dto ]
 
 
 
