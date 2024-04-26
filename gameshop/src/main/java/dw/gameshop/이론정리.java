@@ -100,4 +100,7 @@ Servlet : Http(SMTP, FTP 등) 같은 '웹' 통신규칙을 제어하기 위한 '
           엄청나게 많은 역할을 하고 있으며, 그 자체가 완벽한 '앱'이다. 스프링없이 서블릿만으로 서버를 구성할 수도 있다.
 Servlet Container : 톰캣이 Servlet Container(서블릿을 담고 있음)이다.
                     서블릿을 잔뜩 담고 있는 것 = Servlet Container = 톰캣이다. (ex : 톰캣 = 그루, 서블릿 = 미니언즈들)
+
+[ Merge Tool]
+: 서로 다른 버전의 코드를 버전이 동일 하도록 옮기는 도구
 */
