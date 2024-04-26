@@ -51,4 +51,19 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getCustomerByOrderDate(orderDate),
                 HttpStatus.OK);
     }
+
+
+    //도시별로 주문금액합을 보이되 주문금액합이 많은 상위 5개의 도시에 대한 결과만 보이시오.
+    @GetMapping("/orders/city/orderamount/{limit}")
+    public ResponseEntity<List<Object[]>> getTopCitiesByTotalOrderAmount(@PathVariable int limit) {
+        return new ResponseEntity<>(orderService.getTopCitiesByTotalOrderAmount(limit),
+                HttpStatus.OK);
+    }
+
+    //‘서울특별시’ 고객들에 대해 주문년도별 주문건수를 보이시오
+    @GetMapping("/orders/ordercount/year/{city}")
+    public ResponseEntity<List<Object[]>> getOrderCountByYearForCity(@PathVariable String city) {
+        return new ResponseEntity<>(orderService.getOrderCountByYearForCity(city),
+                HttpStatus.OK);
+    }
 }
