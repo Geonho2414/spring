@@ -7,9 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// JDBC 오리지널 방법 : 굉장히 방법도 많고 복잡하다
 // 우클릭 - 제너레이터 - implements method 선택 - ok
 @Repository
 public class JdbcMemberRepository implements MemberRepository{
@@ -57,7 +59,31 @@ public class JdbcMemberRepository implements MemberRepository{
 
     @Override
     public List<Member> findAll() {
-        return null;
+        String sql = "select * from members";
+        // SQL 페키지내의 클래스 정의
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        // 예외 처리
+        try {
+            conn = DataSourceUtils.getConnection(dataSource);
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            List<Member> members = new ArrayList<>();
+            while (rs.next()) {
+                Member member = new Member();
+                member.setId(rs.getLong(1));
+                member.setName(rs.getString(2));
+                members.add(member);
+            }
+            return members;
+        } catch (Exception e){
+            // 예외처리
+            throw new IllegalStateException(e);
+        } finally {
+            // 연결종료
+            close(conn, pstmt, rs);
+        }
     }
 
     // close 메서드
