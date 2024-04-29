@@ -49,7 +49,7 @@ JDBC : Java Data Base Connectivity
       - 가장 많이 쓰이는 기술 / JPA 아니면 MyBatis 를 가장 많이 사용.
  //사용법
 : Spring io 에서 DeveloperTool 에서 jpa 대신 SpringJDBC 를 선택. 나머지는 동일
-  이후 사용법은 jbdcproject 파일 참조.
+  이후 사용법은 jdbcproject 파일 참조.
  //용어
 DAO : Database Application Object (Repository)
       흔히 Repository 인데, 만약 ORM 을 사용한다면 거의 한줄로 정의가 가능해서 별로 쓰이지 않는 용어.
