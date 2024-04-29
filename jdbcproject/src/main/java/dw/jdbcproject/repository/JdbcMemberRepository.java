@@ -6,10 +6,7 @@ import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,9 +26,15 @@ public class JdbcMemberRepository implements MemberRepository{
         // 예외 처리
         try {
             conn = DataSourceUtils.getConnection(dataSource);
-            pstmt = conn.prepareStatement(sql);
+            pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, member.getName());
             pstmt.executeUpdate();
+            rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                member.setId(rs.getLong(1));
+            }else {
+                throw new SQLException("ID 조회실패");
+            }
             return member;
         } catch (Exception e){
             // 예외처리
