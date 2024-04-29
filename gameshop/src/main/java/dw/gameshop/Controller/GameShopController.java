@@ -55,7 +55,4 @@ public class GameShopController {
     }
 }
 
-
-
-
-
+//  return ResponseEntity.ok(...);  ==  return new ResponseEntity<>(..., HttpStatus.OK);  같은 정의 방식
