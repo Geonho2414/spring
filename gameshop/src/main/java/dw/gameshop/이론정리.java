@@ -34,7 +34,9 @@ DataBase 와 스프링 사이의 통신을 담당.
 [ JDBC ]
  //이론
 JDBC : Java Data Base Connectivity
-우리가 코드를 짤 수도 있지만 주로 JPA 가 자동으로 사용함.
+우리가 코드를 짤 수도 있지만 주로 JPA 가 자동으로 생성/사용함.
+기본 데이터 베이스 통신 구조 : DAO - JDBC - JDBC implements - DataBase
+                          이 기본 구조를 벗어나지 않고 여기서 어떤 기술을 사용할것인가가 관건이다.
 데이터 베이스와 스프링 통신의 2가지 종류 :
 1. ORM 을 사용하는 방법
 2. SQL 을 사용하는 방법 (비 ORM 방식)
@@ -45,8 +47,10 @@ JDBC : Java Data Base Connectivity
       - 템플릿을 가져와서 사용하는 기술.
     3. MyBatis
       - 가장 많이 쓰이는 기술 / JPA 아니면 MyBatis 를 가장 많이 사용.
-
-
+ //용어
+DAO : Database Application Object (Repository)
+      흔히 Repository 인데, 만약 ORM 을 사용한다면 거의 한줄로 정의가 가능해서 별로 쓰이지 않는 용어.
+      JDBC 를 사용한다면 여기에 SQL 문을 작성해야 한다.
 
 
 [ 스프링 시큐리티 ]
