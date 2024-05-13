@@ -9,12 +9,59 @@ package dw.gameshop;
 
 
 [ Spring 시스템 ]
-데이터 베이스를 생성하는 성실 정의 : Model
-데이터 베이스를 JPA 를 통해 사용을 할 수 있도록 호출 : repository
-repository 로 데이터를 불러와 가공하여 기능을 구현 : Service
-Service 의 데이터와 기능을 불러와 톰캣(Servlet Container)을 통해서 웹과 통신 : controller
-기능 중 발생하는 모든 예외를 모아서 처리 : exception
-원하는 정보만 뽑아서 출력하는 기능 : Dto
+Model : 데이터 베이스를 생성하는 성실 정의
+repository : 데이터 베이스를 JPA 를 통해 사용을 할 수 있도록 호출
+repository : Service로 데이터를 불러와 가공하여 기능을 구현
+controller : Service 의 데이터와 기능을 불러와 톰캣(Servlet Container)을 통해서 웹과 통신
+exception : 기능 중 발생하는 모든 예외를 모아서 처리
+Dto : 원하는 정보만 뽑아서 출력하는 기능
+
+
+
+
+[ HTML ]
+ // 이론
+HTML : Hyper Text Markup Language
+: 내가 원하는 페이지로 이동하도록 설정되어있는 정보 언어.
+구조 :
+    HTML
+          |
+          \-HEAD
+          |  |
+          |  \-TITLE
+          |      |
+          |      \-<TITLE>
+          |      |
+          |      \-"Parsing Example"
+          |      |
+          |      \-</TITLE>
+          |
+          \-BODY
+            |
+            \-P
+              |
+              \-<P>
+              |
+              \-"Some text. "
+              |
+              \-EM
+              |  |
+              |  \-<EM>
+              |  |
+              |  \-"*wow*"
+              |  |
+              |  \-</EM>
+              |
+              \-</P>
+
+ // 용어
+ietf : 인터넷 국제 표준 기구
+ - ietf 에서는 인터넷 사용자들의 혼란을 막기 위해 Html 와 CSS 표준작성법을 만들었다.
+ - ietf 의 표준작성법 내용에서 벗어나 코딩을 하게 되면 인터넷상에서 사용이 불가능하다.
+
+
+
+[ CSS ]
 
 
 
@@ -54,6 +101,8 @@ JDBC : Java Data Base Connectivity
 DAO : Database Application Object (Repository)
       흔히 Repository 인데, 만약 ORM 을 사용한다면 거의 한줄로 정의가 가능해서 별로 쓰이지 않는 용어.
       JDBC 를 사용한다면 여기에 SQL 문을 작성해야 한다.
+
+
 
 
 [ 스프링 시큐리티 ]
