@@ -53,6 +53,20 @@ HTML : Hyper Text Markup Language
               |  \-</EM>
               |
               \-</P>
+구조 세부 :
+<!DOCTYPE html>         // HTML 의 버전
+<html lang="en">        // HTML 의 언어 "en"의 자리에 "ko"를 넣으면 한국어를 주로 사용하겠다는 말이다
+<head>          // head 태그 : 현재 이 웹 페이지에 대한 설명/설정을 넣어주고 외부 파일을 연결시켜주는 기능.
+                // 사용자에게 직접적으로 나타나지 않는다. 작성을 하지 않아도 상관이 없으나 검색 엔진에 노출 되기 위하여 작성.
+    <meta charset="UTF-8">          // 문자코드 정의
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">      // 어떤 디바이스(모바일, PC등)에서 사용할 것인지 결정
+    <title>Document</title>         // 페이지 제목
+</head>         // head 종료
+<body>          // body 태그 : 사용자에게 보여지는 웹페이지의 실질적인 내용.
+
+</body>
+</html>
+
  // 용어
 ietf : 인터넷 국제 표준 기구
  - ietf 에서는 인터넷 사용자들의 혼란을 막기 위해 Html 와 CSS 표준작성법을 만들었다.
