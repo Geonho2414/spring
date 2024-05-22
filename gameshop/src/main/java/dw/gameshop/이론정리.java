@@ -12,7 +12,6 @@ package dw.gameshop;
 
 
 
-
 <프로젝트 1>
 필수구현사항 :
  1. 모든 주요 정보는 데이터베이스화 해야함.
@@ -40,11 +39,10 @@ package dw.gameshop;
 
 --** Front End **--
 
-// 프론트엔드의 구조 :
+// 프론트엔드의 구조
 HTML : 뼈대
 CSS : 디자인
 Java Script : 동적페이지
-
 
 
 
@@ -96,9 +94,7 @@ ietf : 인터넷 국제 표준 기구
 
 
 
-
 [ CSS ]
-
 
 
 
@@ -152,7 +148,12 @@ Node :
 
 --** Back End **--
 
-
+// 백엔드의 구조 - 상수도 시스템에 비유
+프론트엔드 : 수돗꼭지 : 사용자에게 공급
+Tomcat : 급수관 : 프론트엔드와 백엔드를 연결
+Spring : 정수장 : 데이터 가공/사용
+Jpa : 도수관 : Spring 과 DB를 연결
+DB : 호수 : 모든 데이터 집합소
 
 
 [ Spring 시스템 ]
@@ -165,16 +166,13 @@ Dto : 원하는 정보만 뽑아서 출력하는 기능
 
 
 
-
 [ tomcat ]
 : Servlet Container 이다. 자바와 웹 브라우저 사이의 통신을 담당한다.
 
 
 
-
 [ JPA ]
 DataBase 와 스프링 사이의 통신을 담당.
-
 
 
 
@@ -201,7 +199,6 @@ JDBC : Java Data Base Connectivity
 DAO : Database Application Object (Repository)
       흔히 Repository 인데, 만약 ORM 을 사용한다면 거의 한줄로 정의가 가능해서 별로 쓰이지 않는 용어.
       JDBC 를 사용한다면 여기에 SQL 문을 작성해야 한다.
-
 
 
 
@@ -232,7 +229,6 @@ DAO : Database Application Object (Repository)
 username
 password
 ROLE_()
-
 
 
 
@@ -273,7 +269,6 @@ SEO : Search Engine Optimization - 검색 엔진 최적화
 
 
 
-
 [ Servlet ]
  //이론
 Servlet : Http(SMTP, FTP 등) 같은 '웹' 통신규칙을 제어하기 위한 '자바' 인터페이스의 구현체.(자바 소프트웨어)
@@ -282,7 +277,6 @@ Servlet : Http(SMTP, FTP 등) 같은 '웹' 통신규칙을 제어하기 위한 '
           엄청나게 많은 역할을 하고 있으며, 그 자체가 완벽한 '앱'이다. 스프링없이 서블릿만으로 서버를 구성할 수도 있다.
 Servlet Container : 톰캣이 Servlet Container(서블릿을 담고 있음)이다.
                     서블릿을 잔뜩 담고 있는 것 = Servlet Container = 톰캣이다. (ex : 톰캣 = 그루, 서블릿 = 미니언즈들)
-
 
 
 
