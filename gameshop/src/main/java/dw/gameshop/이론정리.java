@@ -13,6 +13,18 @@ package dw.gameshop;
 
 
 
+<프로젝트 1>
+필수구현사항 :
+ 1. 모든 주요 정보는 데이터베이스화 해야함.
+ 2. 로그인/로그아웃/회원가입
+ 3. 보안 기술 사용(Spring Security + JWT)
+ 4. 권한(Role)에 맞는 정보 처리(ex : User, Admin)
+ 5. Dashboard 기능(권한마다 다르게 설정)
+ 6. 게시판 기능
+
+
+
+
 [ Spring 시스템 ]
 Model : 데이터 베이스를 생성하는 성실 정의
 repository : 데이터 베이스를 JPA 를 통해 사용을 할 수 있도록 호출
