@@ -99,6 +99,18 @@ ietf : 인터넷 국제 표준 기구
 [ CSS ]
  // 이론
 CSS : 레이아웃을 구성, 애니메이션/디테일을 구현(복잡한 애니메이션은 JavaScript 로 구현)
+CSS 파트 소개 :
+1. CSS 기본 스타일 문법
+   - CSS 적용 규칙
+   - 글꼴, 텍스트, 리스트, 테이블
+2. BOX 모델 (레이아웃 모델)  // 중요!
+   - Contents 의 배치와 관련된 문법
+   - Position, Margin, Padding... 등등
+3. Image
+   - 이미지 추가, 수정
+   - 배경이미지 추가, 수정
+4. 애니메이션
+5. 반응형 웹을 만들기 위한 문법
 
 
 
@@ -185,19 +197,19 @@ DataBase 와 스프링 사이의 통신을 담당.
 [ JDBC ]
  //이론
 JDBC : Java Data Base Connectivity
-우리가 코드를 짤 수도 있지만 주로 JPA 가 자동으로 생성/사용함.
-기본 데이터 베이스 통신 구조 : DAO - JDBC - JDBC implements - DataBase
-                          이 기본 구조를 벗어나지 않고 여기서 어떤 기술을 사용할것인가가 관건이다.
+이론 : 우리가 코드를 짤 수도 있지만 주로 JPA 가 자동으로 생성/사용함.
+      기본 데이터 베이스 통신 구조 : DAO - JDBC - JDBC implements - DataBase
+                                이 기본 구조를 벗어나지 않고 여기서 어떤 기술을 사용할것인가가 관건이다.
 데이터 베이스와 스프링 통신의 2가지 종류 :
 1. ORM 을 사용하는 방법
 2. SQL 을 사용하는 방법 (비 ORM 방식)
    이 SQL 을 사용하는 3가지 방법
     1. JDBC
-      - 중복되는 코드가 너무 많아서 요즘엔 잘 안쓰는 기술.
+       - 중복되는 코드가 너무 많아서 요즘엔 잘 안쓰는 기술.
     2. JDBC Template
-      - 템플릿을 가져와서 사용하는 기술.
+       - 템플릿을 가져와서 사용하는 기술.
     3. MyBatis
-      - 가장 많이 쓰이는 기술 / JPA 아니면 MyBatis 를 가장 많이 사용.
+       - 가장 많이 쓰이는 기술 / JPA 아니면 MyBatis 를 가장 많이 사용.
  //사용법
 : Spring io 에서 DeveloperTool 에서 jpa 대신 SpringJDBC 를 선택. 나머지는 동일
   이후 사용법은 jdbcproject 파일 참조.
