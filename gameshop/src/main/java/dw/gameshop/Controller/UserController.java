@@ -32,13 +32,8 @@ public class UserController {
 
     @PostMapping("signup")
     public ResponseEntity<String> signUp(@RequestBody UserDto userDto) {
-        System.out.println(userDto.getUserId());
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(userDto.getUserId(), userDto.getPassword())
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        return ResponseEntity.ok("Success");
+        return new ResponseEntity<>(userService.saveUser(userDto),
+                HttpStatus.CREATED);
     }
 
     @PostMapping("login")

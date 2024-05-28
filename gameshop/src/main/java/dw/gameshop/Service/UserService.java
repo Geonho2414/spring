@@ -26,6 +26,11 @@ public class UserService {
                 userDto.getUserEmail(),
                 bCryptPasswordEncoder.encode(userDto.getPassword()),
                 LocalDateTime.now());
+        System.out.println(user.getUserId());
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+        System.out.println(user.getEmail());
+        System.out.println(user.getCreatedAt());
         return userRepository.save(user).getUserId();
     }
 }
