@@ -29,6 +29,7 @@ public class SecurityConfig {
         return http
                 .authorizeRequests(auth -> auth
                         .requestMatchers(  // 예외 : 이 안에 들어있는것만 인증을 허용하겠다.
+                                new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
                                 new AntPathRequestMatcher("/login")
