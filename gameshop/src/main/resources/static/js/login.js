@@ -24,3 +24,16 @@ document.querySelector(".loginBtn").addEventListener("click", ()=>{
     console.log("에러 발생: ", error);
   })
 });
+function sessionCurrent(){
+  axios
+  .get("http://localhost:8080/user/current",{withCredentials: true})
+  .then((response)=>{
+    console.log("데이터: ", response);
+    if(response.status == 200) {
+      console.log("세션 유지");
+    }
+  })
+  .catch((error)=>{
+    console.log("에러 발생: ", error);
+  })
+}
