@@ -17,7 +17,7 @@ public class ViewController {
 
     @GetMapping("/gameshop/index.html")
     public String index(){return "index";}
-    
+
     @GetMapping("/gameshop/singleProduct.html")
     public String singleProduct(){return "singleProduct";}
 

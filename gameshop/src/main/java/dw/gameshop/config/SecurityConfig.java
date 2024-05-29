@@ -32,7 +32,10 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
-                                new AntPathRequestMatcher("/login")
+                                new AntPathRequestMatcher("/login"),
+                                new AntPathRequestMatcher("/gameshop/**"),
+                                new AntPathRequestMatcher("/css/**"),
+                                new AntPathRequestMatcher("/js/**")
                         ).permitAll()
                         .anyRequest().authenticated())  // 스프링 시큐리티의 디폴트 상태 : 어떠한 요청이든 인증을 받겠다.
                 .formLogin(form->form.loginPage("/login")   // 내가 직접 만든 로그인 화면을 사용하겠다.
