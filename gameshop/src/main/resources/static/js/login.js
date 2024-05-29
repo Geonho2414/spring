@@ -1,13 +1,24 @@
 const urlLogin = "http://localhost:8080/user/login";
 const urlLogout = "http://localhost:8080/user/logout";
+const urlSignup = "http://localhost:8080/user/signup";
 let userId = "";
 let password = "";
+let userName = "";
+let userEmail = "";
 
 document.querySelector("#userId").addEventListener("change", (e)=>{
   console.log(e.target.value);
   userId = e.target.value;
 });
 document.querySelector("#password").addEventListener("change", (e)=>{
+  console.log(e.target.value);
+  password = e.target.value;
+});
+document.querySelector("#userName").addEventListener("change", (e)=>{
+  console.log(e.target.value);
+  password = e.target.value;
+});
+document.querySelector("#userEmail").addEventListener("change", (e)=>{
   console.log(e.target.value);
   password = e.target.value;
 });
@@ -43,6 +54,24 @@ document.querySelector(".logoutBtn").addEventListener("click",  ()=>{
     })
   }
 })
+
+document.querySelector(".signupBtn2").addEventListener("click",()=>{
+  const data = {
+    userId: userId,
+    password: password,
+    userName: userName,
+    userEmail: userEmail
+  }
+  axios
+  .post(urlSignup, data, {withCredentials: true})
+  .then((response)=>{
+    console.log("데이터: ", response);
+    sessionCurrent();
+  })
+  .catch((error)=>{
+    console.log("에러 발생: ", error);
+  })
+});
 
 function sessionCurrent(){
   axios
