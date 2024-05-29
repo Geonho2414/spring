@@ -19,6 +19,7 @@ document.querySelector(".loginBtn").addEventListener("click", ()=>{
   .post(urlLogin, data, {withCredentials: true})
   .then((response)=>{
     console.log("데이터: ", response);
+    sessionCurrent();
   })
   .catch((error)=>{
     console.log("에러 발생: ", error);
@@ -31,9 +32,19 @@ function sessionCurrent(){
     console.log("데이터: ", response);
     if(response.status == 200) {
       console.log("세션 유지");
+          if (response.status == 200){
+            document.querySelector(".login-box").classList.add("hidden");
+            document.querySelector(".user-box").classList.remove("hidden");
+            document.querySelector(".user-box p").textContent
+            = response.data + "님, 환영합니다."
+          }
     }
   })
   .catch((error)=>{
     console.log("에러 발생: ", error);
   })
 }
+
+// js 파일이 로드될때 호출됨
+// 전역 위치
+sessionCurrent();
