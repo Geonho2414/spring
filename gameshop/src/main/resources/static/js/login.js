@@ -1,24 +1,13 @@
 const urlLogin = "http://localhost:8080/user/login";
 const urlLogout = "http://localhost:8080/user/logout";
-const urlSignup = "http://localhost:8080/user/signup";
 let userId = "";
 let password = "";
-let userName = "";
-let userEmail = "";
 
 document.querySelector("#userId").addEventListener("change", (e)=>{
   console.log(e.target.value);
   userId = e.target.value;
 });
 document.querySelector("#password").addEventListener("change", (e)=>{
-  console.log(e.target.value);
-  password = e.target.value;
-});
-document.querySelector("#userName").addEventListener("change", (e)=>{
-  console.log(e.target.value);
-  password = e.target.value;
-});
-document.querySelector("#userEmail").addEventListener("change", (e)=>{
   console.log(e.target.value);
   password = e.target.value;
 });
@@ -37,62 +26,42 @@ document.querySelector(".loginBtn").addEventListener("click", ()=>{
     console.log("에러 발생: ", error);
   })
 });
-
-document.querySelector(".logoutBtn").addEventListener("click",  ()=>{
-  if(confirm("로그아웃하시겠습니까?")){
+document.querySelector(".logoutBtn").addEventListener("click", ()=>{
+  if (confirm("로그아웃하시겠습니까?")) {
     axios
-    .post(urlLogout, {}, {withCredentials : true})
+    .post(urlLogout, {}, {withCredentials: true})
     .then((response)=>{
-      console.log("데이터: ", response);
-      if(response.status == 200){
+      console.log("데이터:", response);
+      if(response.status == 200) {
         document.querySelector(".login-box").classList.remove("hidden");
         document.querySelector(".user-box").classList.add("hidden");
       }
     })
-    .catch((error)=> {
-      console.log("에러 발생: ", error);
+    .catch((error)=>{
+      console.log("에러 발생:", error);
     })
   }
 })
 
-document.querySelector(".signupBtn2").addEventListener("click",()=>{
-  const data = {
-    userId: userId,
-    password: password,
-    userName: userName,
-    userEmail: userEmail
-  }
+function sessionCurrent() {
   axios
-  .post(urlSignup, data, {withCredentials: true})
+  .get("http://localhost:8080/user/current", {withCredentials: true})
   .then((response)=>{
-    console.log("데이터: ", response);
-    sessionCurrent();
-  })
-  .catch((error)=>{
-    console.log("에러 발생: ", error);
-  })
-});
-
-function sessionCurrent(){
-  axios
-  .get("http://localhost:8080/user/current",{withCredentials: true})
-  .then((response)=>{
-    console.log("데이터: ", response);
-    if(response.status == 200) {
+    console.log("데이터:", response);
+    if (response.status == 200) {
       console.log("세션 유지");
-          if (response.status == 200){
-            document.querySelector(".login-box").classList.add("hidden");
-            document.querySelector(".user-box").classList.remove("hidden");
-            document.querySelector(".user-box p").textContent
-            = response.data + "님, 환영합니다."
-          }
+      if (response.status == 200) {
+        document.querySelector(".login-box").classList.add("hidden");
+        document.querySelector(".user-box").classList.remove("hidden");
+        document.querySelector(".user-box p").textContent
+          = response.data + "님, 환영합니다.";
+      }
     }
   })
   .catch((error)=>{
-    console.log("에러 발생: ", error);
+    console.log("에러 발생:", error);
   })
 }
 
 // js 파일이 로드될때 호출됨
-// 전역 위치
 sessionCurrent();
