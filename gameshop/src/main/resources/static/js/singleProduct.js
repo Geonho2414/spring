@@ -55,7 +55,7 @@ function displaySingleProducts(data) {
     product.appendChild(game);
 
     document.querySelector(".cartBtn").addEventListener("click", ()=>{
-      sessionCurrent();
+      sessionCurrent(data);
     });    
 }
 
