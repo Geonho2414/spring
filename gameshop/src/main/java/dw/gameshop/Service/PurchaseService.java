@@ -29,10 +29,12 @@ public class PurchaseService {
     }
 
     public List<Purchase> savePurchaseList(List<Purchase> purchaseList) {
-        List<Purchase> savedPurchaseList = purchaseList.stream().map((purchase) -> {
-            purchase.setPurchaseTime(LocalDateTime.now());
-            return purchaseRepository.save(purchase);
-        })
+        List<Purchase> savedPurchaseList = purchaseList.stream()
+                .map((purchase)->{
+                    //구매확정 바로 직전, 현재시간을 저장함
+                    purchase.setPurchaseTime(LocalDateTime.now());
+                    return purchaseRepository.save(purchase);
+                })
                 .collect(Collectors.toList());
         return savedPurchaseList;
     }
