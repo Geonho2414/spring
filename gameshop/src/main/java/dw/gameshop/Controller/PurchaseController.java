@@ -19,6 +19,11 @@ public class PurchaseController {
         return purchaseService.savePurchase(purchase);
     }
 
+    @PostMapping("/products/purchaselist")
+    public List<Purchase> savePurchase(@RequestBody List<Purchase> purchaseList) {
+        return purchaseService.savePurchaseList(purchaseList);
+    }
+
     @GetMapping("/products/purchase")
     public List<Purchase> getAllPurchases() {
         return purchaseService.getAllPurchases();
