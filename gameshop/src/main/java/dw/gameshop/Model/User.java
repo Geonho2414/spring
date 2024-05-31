@@ -1,9 +1,6 @@
 package dw.gameshop.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @NoArgsConstructor
@@ -30,12 +28,25 @@ public class User implements UserDetails {
     private String email;
     @Column(name="password")
     private String password;
+    @ManyToOne
+    @JoinColumn(name = "user_authority")
+    private Authority authority;
     @Column(name="created_at", updatable = false)
     private LocalDateTime createdAt;
 
+
+    // 권한 설정을 해준후 데이터베이스 스크립트에서 중복제거를 위해
+
+    /* use gameshop
+
+       set foreign_key_checks=0;
+
+       drop table `user`*/
+
+    // 를 실행해주고, 서버를 재시동해야 한다.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("user"));
+        return Collections.singletonList(new SimpleGrantedAuthority(authority.getAuthorityName()));
     }
 
     @Override
