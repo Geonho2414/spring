@@ -25,13 +25,14 @@ function sessionCurrent(data) {
     .then((response)=>{
       console.log("데이터:", response.data);
       if (response.status == 200) {
-        const userId = response.data;
+        const userId = response.data.userId;
+        const authority = response.data.authority[0].authority;
         let cartItems = JSON.parse(localStorage.getItem(userId));
         if (cartItems) {
           displayCart(cartItems);
           const data = cartItems.map((game)=>{
             // perchase 객체를 만들어서 리턴
-            return { game : {game}, user : {userId: userId} };
+            return { game : {game}, user : {userId: userId, authority:{authorityName:authority}} };
           })
           document.querySelector(".purchaseBtn").addEventListener("click", ()=>{
             if (confirm("진짜 구매하시겠습니까?")) {
