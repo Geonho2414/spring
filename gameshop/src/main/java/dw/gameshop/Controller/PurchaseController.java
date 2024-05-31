@@ -23,7 +23,7 @@ public class PurchaseController {
     }
 
     @PostMapping("/products/purchaselist")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")  // ('ADMIN', 'USER') 이런식으로 롤 계속 추가
     public List<Purchase> savePurchaseList(@RequestBody List<Purchase> purchaseList) {
         return purchaseService.savePurchaseList(purchaseList);
     }
