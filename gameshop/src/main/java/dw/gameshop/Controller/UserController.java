@@ -31,13 +31,13 @@ public class UserController {
         this.httpServletRequest = httpServletRequest;
     }
 
-    @PostMapping("signup")
+    @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(userService.saveUser(userDto),
                 HttpStatus.CREATED);
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserDto userDto, HttpServletRequest request) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(userDto.getUserId(), userDto.getPassword())
@@ -60,7 +60,7 @@ public class UserController {
         return "Yoy have been logged out.";
     }
 
-    @GetMapping("current")
+    @GetMapping("/current")
     public String getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
