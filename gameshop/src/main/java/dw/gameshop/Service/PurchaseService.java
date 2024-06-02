@@ -62,12 +62,3 @@ public class PurchaseService {
         return purchaseRepository.findByUser(userOptional.get());
     }
 }
-
-
-
-
-
-
-
-
-
