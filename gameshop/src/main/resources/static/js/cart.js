@@ -1,24 +1,5 @@
 const url = "http://localhost:8080/api/products/purchaselist";
 
-const data = [
-  {
-    "game":{
-      "id": 1
-    },
-    "user":{
-      "userId": "tom12"
-    }
-  },
-  {
-    "game":{
-      "id": 2
-    },
-    "user":{
-      "userId": "tom12"
-    }
-  }
-];
-
 function sessionCurrent(data) {
     axios
     .get("http://localhost:8080/user/current", {withCredentials: true})
