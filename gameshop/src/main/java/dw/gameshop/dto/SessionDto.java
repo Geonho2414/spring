@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
-import java.util.Collections;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,5 +14,5 @@ import java.util.Collections;
 @Setter
 public class SessionDto {
     private String userId;
-    private Collection<? extends GrantedAuthority> authoritiy;
+    private Collection<? extends GrantedAuthority> authority;
 }
