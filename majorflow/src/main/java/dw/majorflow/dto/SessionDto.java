@@ -12,7 +12,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @Getter
 @Setter
-public class sessionDto {
+public class SessionDto {
     private String userId;
     private Collection<? extends GrantedAuthority> authority;
 }
