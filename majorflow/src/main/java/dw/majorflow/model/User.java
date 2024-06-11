@@ -36,7 +36,7 @@ public class User {
     private String address;
 
     @Column
-    private String  gender;
+    private String gender;
 
     @Column
     private String email;
