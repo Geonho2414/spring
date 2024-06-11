@@ -21,7 +21,7 @@ import java.util.Collections;
 @Getter
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "user_id")
     private String userId;
@@ -57,4 +57,34 @@ public class User {
     @JoinColumn
     private Authority authority;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority(authority.getAuthorityName()));
+    }
+
+    @Override
+    public String getPassword(){return password;}
+
+    @Override
+    public String getUsername(){return userId;}
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
