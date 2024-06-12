@@ -23,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     private UserService userService;
 
     private UserDetailService userDetailService;
@@ -43,12 +44,12 @@ public class UserController {
         return new ResponseEntity<>(userService.getUsersAll(),
                 HttpStatus.OK);
     }
+
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody UserDto user) {
         return new ResponseEntity<>(userService.saveUser(user),
                 HttpStatus.CREATED);
     }
-
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserDto userDto, HttpServletRequest request) {
         Authentication authentication = authenticationManager.authenticate(

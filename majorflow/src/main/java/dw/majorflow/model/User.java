@@ -1,6 +1,5 @@
 package dw.majorflow.model;
 
-import dw.majorflow.service.UserDetailService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -19,6 +17,7 @@ import java.util.Collections;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
@@ -53,7 +52,6 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String genre;
 
-    @ManyToOne
     @JoinColumn
     private Authority authority;
 
