@@ -43,6 +43,12 @@ package dw.gameshop;
 3. 메서드 호출 구조 일원화
 4. CSS
 5. Rest API
+
+Localhost 는 나의 컴퓨터에서만 가능하다.
+어떻게 Session Current 를 공용으로 사용할 수 있을까?
+1. Session Current 를 Util.js(모든 페이지가 공용으로 사용하는 영역)에 넣어놓고
+2. HTML 가 Util 을 import 하고 있으면 된다.
+
  // 팁
 리펙토링은 자신만의 규칙으로 해서는 절대로 안된다.
 다 같이 정한 팀 규칙으로 누구나 알아볼 수 있도록 정리를 하는 과정인 것이다.
