@@ -3,6 +3,7 @@ package dw.gameshop_jwt.dto;
 import dw.gameshop_jwt.model.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class UserDto {
     private String password;
 
     @NotBlank(message = "User name is mandatory")
+    //@Pattern() 정규식 패턴을 만들어주는 것. 매우 유용!
     private String userName;
 
     @NotBlank(message = "Email is mandatory")
