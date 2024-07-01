@@ -2,17 +2,18 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 console.log("Game ID: ", id);
 
-const url = "http://localhost:8080/products/" + id;
+const url = "/api/products/" + id;
+const urlSession = "/api/user/current";
 
 axios
-.get(url)
-.then((response)=>{
-  console.log("데이터: ", response.data);
-  displaySingleProduct(response.data);
-})
-.catch((error)=>{
-  console.log("에러 발생: ", error);
-});
+  .get(url)
+  .then((response) => {
+    console.log("데이터: ", response.data);
+    displaySingleProduct(response.data.data);
+  })
+  .catch((error) => {
+    console.log("에러 발생: ", error.response.data);
+  });
 
 function displaySingleProduct(data) {
   const product = document.querySelector(".product");
@@ -50,32 +51,43 @@ function displaySingleProduct(data) {
   left.appendChild(text);
   lowBox.appendChild(left);
   lowBox.appendChild(right);
-  game.appendChild(img);  
-  game.appendChild(lowBox);  
-  product.appendChild(game);  
+  game.appendChild(img);
+  game.appendChild(lowBox);
+  product.appendChild(game);
 
-  document.querySelector(".cartBtn").addEventListener("click", ()=>{
+  document.querySelector(".cartBtn").addEventListener("click", () => {
     sessionCurrent(data);
   });
 }
 
 function sessionCurrent(data) {
-  axios
-  .get("http://localhost:8080/user/current", {withCredentials: true})
-  .then((response)=>{
-    console.log("데이터:", response.data);
-    if (response.status == 200) {
-      const userId = response.data.userId;
-      let cartItems = JSON.parse(localStorage.getItem(userId));
-      if (!cartItems) {
-        cartItems = [];
-      }
-      cartItems.push(data);
-      localStorage.setItem(userId, JSON.stringify(cartItems));
-    }
-  })
-  .catch((error)=>{
-    console.log("에러 발생:", error);
+  const jwtToken = sessionStorage.getItem("JWT-token");
+  if (!jwtToken) {
+    console.log("인증이 필요합니다.");
     alert("로그인해주세요.");
-  })
+    return;
+  }
+  axios
+    .get(urlSession, {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    })
+    .then((response) => {
+      console.log("데이터:", response.data);
+      if (response.data.resultCode == "SUCCESS") {
+        const userId = response.data.data.userId;
+        let cartItems = JSON.parse(localStorage.getItem(userId));
+        if (!cartItems) {
+          cartItems = [];
+        }
+        cartItems.push(data);
+        localStorage.setItem(userId, JSON.stringify(cartItems));
+      }
+    })
+    .catch((error) => {
+      console.log("에러 발생:", error.response.data);
+      alert("로그인해주세요.");
+    });
 }
