@@ -304,7 +304,10 @@ Servlet Container : 톰캣이 Servlet Container(서블릿을 담고 있음)이�
 
 
 [ Refactoring ]
+ //리펙토링의 대상 :
 1. 중복 메서드 선언 정리
 2. 변수 이름 메서드
 3. 메서드 호출 구조 일원화
+4. CSS
+
 */
