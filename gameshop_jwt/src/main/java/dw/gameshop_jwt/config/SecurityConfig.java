@@ -51,6 +51,8 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // Always 는 항상 세션을 생성 / If_Required 는 요청에 따라 생성
+                // STATELESS 서버에서 세션 관리를 하지 않는 것임으로 JWT 토큰을 사용하는 경우
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(new MyAuthenticationEntryPoint())
