@@ -17,16 +17,14 @@ public class LectureService {
     @Autowired
     LectureRepository lectureRepository;
 
-    UserRepository userRepository;
-
     public List<Lecture> getAllLectures() {
         return lectureRepository.findAll();
     }
 
     public Lecture getLectureById(long id) {
-        Optional<Lecture> optionalLecture = LectureRepository.find(id);
-        if(optionalLecture.isPresent()) {
-            return optionalLecture.get();
+        Optional<Lecture> lectureOptional = lectureRepository.findById(id);
+        if(lectureOptional.isPresent()) {
+            return lectureOptional.get();
         }else {
             throw new ResourceNotFoundException("Lecture", "ID", id);
         }

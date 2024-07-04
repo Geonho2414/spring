@@ -9,5 +9,4 @@ public class MajorFlowApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MajorFlowApplication.class, args);
 	}
-
 }

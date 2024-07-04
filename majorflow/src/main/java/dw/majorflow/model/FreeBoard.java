@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,9 +21,11 @@ public class FreeBoard {
     private Long freeBoardId;
 
     @Column
+    private String title;
+
+    @Column
     private String text;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column
+    private LocalDateTime FreeBoardTime;
 }
