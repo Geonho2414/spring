@@ -1,8 +1,8 @@
 package dw.majorflow.controller;
 
-import dw.enumstatus.ResultCode;
-import dw.jwt.JwtFilter;
-import dw.jwt.TokenProvider;
+import dw.majorflow.enumstatus.ResultCode;
+import dw.majorflow.jwt.JwtFilter;
+import dw.majorflow.jwt.TokenProvider;
 import dw.majorflow.dto.BaseResponse;
 import dw.majorflow.dto.LoginDto;
 import dw.majorflow.dto.TokenDto;
@@ -14,7 +14,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

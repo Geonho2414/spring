@@ -1,4 +1,4 @@
-package dw.enumstatus;
+package dw.majorflow.enumstatus;
 
 public enum ResultCode {
     SUCCESS("정상 처리되었습니다"),
